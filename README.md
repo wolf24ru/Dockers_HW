@@ -3,7 +3,7 @@
 ```shell
 docker build --tag django_project:1.0 ./
 ```
-2) Запустить Docker контейнер (порт лева может быть любым другим доступным портом):
+2) Запустить Docker контейнер (порт cлева может быть любым другим доступным портом):
 ```shell
 docker run -p 8000:8000 -d --name django_server django_project:1.0
 ```
