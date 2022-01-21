@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:14-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file: .env
+
+  nginx_app:
+    build: ./nginx
+    ports:
+      - 1337:5000
+#    env_file: .env
+    depends_on:
+      - django_app
+
+  django_app:
+    build: .
+    command: gunicorn stocks_products.wsgi:application --bind 0.0.0.0:5000
+    expose:
+      - 5000
+    env_file: .env
+    depends_on:
+      - db
+volumes:
+  postgres_data:
