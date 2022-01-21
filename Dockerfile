@@ -1,14 +1,16 @@
-FROM python:3
+FROM python:3.9.6-alpine
 
 WORKDIR /usr/src/CRUD
 
-COPY Django_project Django_project
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
-RUN pip install --no-cache-dir -r Django_project/requirements.txt
+COPY Django_project .
 
-ENV SECRET_KEY="sd1fsd2f11sdf21sd54f" 
-ENV DEBUG = "True"
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD [ "python", "Django_project/manage.py", "migrate" ]
+# ENV SECRET_KEY="sd1fsd2f11sdf21sd54f"
+# ENV DEBUG = "True"
 
-CMD [ "python", "Django_project/manage.py", "runserver", "0.0.0.0:8000" ]
+CMD [ "python", "manage.py", "migrate", "--noinput" ]
