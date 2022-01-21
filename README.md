@@ -1,10 +1,13 @@
 ## Шаги для запуска:
-1) Создать из Dokerfile образ (имя тега может быть другим):
+1) Собрать конфигурацию командой:
 ```shell
-docker build --tag django_project:1.0 ./
+docker-compose -f docker-compose.prod.yml up -d --build
 ```
-2) Запустить Docker контейнер (порт cлева может быть любым другим доступным портом):
+2) Отправить любой из [достуных запросов](https://github.com/wolf24ru/Dockers_HW/blob/Docker_1_ex_2/Django_project/requests-examples.http) на http://0.0.0.0:13337/api/v1
+
+ 
+
+### Если не работает можно попробовать создать миграции вручную
 ```shell
-docker run -p 8000:8000 -d --name django_server django_project:1.0
+docker-compose -f docker-compose.prod.yml exec django_app python manage.py migrate --noinput
 ```
-3) Отправить любой из [достуных запросов](https://github.com/wolf24ru/Dockers_HW/blob/Docker_1_ex_2/Django_project/requests-examples.http) на http://0.0.0.0:8000/api/v1
