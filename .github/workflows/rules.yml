@@ -2,7 +2,7 @@ name: rules
 
 on:
   push:
-    branches: [ $CICD ]
+    branches: [ CICD ]
 
 jobs:
   tests:
