@@ -1,7 +1,7 @@
-nmae: rules
+namae: rules
 
 on:
-  push: [ Docker_1_ex_2 ]
+  push: [ CICD ]
 
 jobs:
   tests:
