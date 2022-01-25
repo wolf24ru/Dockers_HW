@@ -1,4 +1,4 @@
-namae: rules
+name: rules
 
 on:
   push: [ CICD ]
