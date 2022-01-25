@@ -28,7 +28,7 @@ SECRET_KEY = 'sdfhjo8sdufiu8sduyfj'
 # DEBUG = bool(os.getenv('DEBUG'))
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -82,12 +82,10 @@ WSGI_APPLICATION = 'stocks_products.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'netology_stocks_products',
-        # 'USER': os.getenv('USER_DB'),
-        # 'PASSWORD': os.getenv('PASSWORD_DB', '12345678'),
-        # 'HOST': '127.0.0.1',
-        # 'PORT': '5432',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
