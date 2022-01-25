@@ -139,3 +139,7 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 5,
     # 'SEARCH_PARAM': 'product',
 }
+
+import django_heroku
+django_heroku.settings(locals())
+
