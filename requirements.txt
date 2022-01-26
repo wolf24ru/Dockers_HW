@@ -5,4 +5,5 @@ django-filter
 gunicorn
 django-heroku
 pytest
+pytest-django
 dj-database-url
