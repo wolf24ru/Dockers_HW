@@ -22,12 +22,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = os.getenv('SECRET_KEY', 'super-secret-key')
-SECRET_KEY = 'sdfhjo8sdufiu8sduyfj'
+SECRET_KEY = os.getenv('SECRET_KEY', 'super-secret-key')
+# SECRET_KEY = 'sdfhjo8sdufiu8sduyfj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = bool(os.getenv('DEBUG'))
-DEBUG = False
+DEBUG = bool(os.getenv('DEBUG'))
+# DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -80,15 +80,20 @@ WSGI_APPLICATION = 'stocks_products.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'netology_stocks_products',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        # 'NAME': 'netology_stocks_products',
+        # 'USER': os.getenv('POSTGRES_USER'),
+        # 'PASSWORD': os.getenv('POSTGRES_PASSWORD', '12345678'),
+        # 'HOST': os.environ.get("SQL_HOST", "localhost"),
+        # "PORT": os.environ.get("SQL_PORT", "5432"),
     }
 }
+
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 
 # Password validation
