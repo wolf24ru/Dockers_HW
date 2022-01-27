@@ -7,3 +7,4 @@ django-heroku
 pytest
 pytest-django
 dj-database-url
+model_bakery
